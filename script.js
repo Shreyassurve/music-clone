@@ -78,11 +78,11 @@ myprogressbar.addEventListener("change", () => {
     (myprogressbar.value * audioElement.duration) / 100;
 });
 
-const makeallplays = () => {
-  Array.from(document.getElementsByClassName("songitemsplay")).forEach(
-    (Element) => {
-      Element.target.classList.remove("fa-circle-pause");
-      Element.classList.add("fa-circle-play");
+const makeAllPlays = () => {
+  Array.from(document.getElementsByClassName("songItemPlay")).forEach(
+    (element) => {
+      element.classList.remove("fa-circle-pause");
+      element.classList.add("fa-circle-play");
     }
   );
 };

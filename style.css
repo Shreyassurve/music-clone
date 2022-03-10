@@ -107,3 +107,28 @@ nav ul li {
   opacity: 0;
   transition: opacity 0.4s ease-in;
 }
+
+@media (max-width: 784px) {
+  /*{
+    background-color: red;
+  }*/
+  .container {
+    width: 379px;
+  }
+
+  .songlist h1 {
+    display: flex;
+    justify-content: center;
+  }
+  .songitemcontainer {
+    margin: 9px;
+    border-radius: 21px;
+  }
+
+  .songinfo {
+    position: absolute;
+    left: -24vw;
+    display: flex;
+    /* font-family: "Varela Round", sans-serif; */
+  }
+}
