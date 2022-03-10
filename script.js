@@ -1,12 +1,12 @@
 console.log("welcome to music");
 
 //Initialization the variables
-let songindex = 0;
+let songIndex = 0;
 let audioElement = new Audio("songs/1.mp3");
 let masterPlay = document.getElementById("masterPlay");
 let myprogressbar = document.getElementById("myprogressbar");
 let gif = document.getElementById("gif");
-let masterSongName = document.getElementById("mastersongName");
+let masterSongName = document.getElementById("masterSongName");
 let songitems = Array.from(document.getElementsByClassName("songitem"));
 
 let songs = [
@@ -94,7 +94,7 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach(
       songIndex = parseInt(e.target.id);
       e.target.classList.remove("fa-circle-play");
       e.target.classList.add("fa-circle-pause");
-      audioElement.src = `songs/${songIndex + 1}.mp3`;
+      audioElement.src = songs[songIndex].filePath;
       masterSongName.innerText = songs[songIndex].songName;
       audioElement.currentTime = 0;
       audioElement.play();
@@ -106,12 +106,11 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach(
 );
 
 document.getElementById("next").addEventListener("click", () => {
-  if (songindex >= 9) {
-    songindex = 0;
-  } else {
-    songindex += 1;
-  }
-  audioElement.src = `songs/${songIndex + 1}.mp3`;
+  songIndex += 1;
+  if (songIndex > songs.length - 1) {
+    songIndex = 0;
+  } 
+  audioElement.src = songs[songIndex].filePath;
   masterSongName.innerText = songs[songIndex].songName;
   audioElement.currentTime = 0;
   audioElement.play();
@@ -120,12 +119,11 @@ document.getElementById("next").addEventListener("click", () => {
 });
 
 document.getElementById("previous").addEventListener("click", () => {
-  if (songIndex <= 0) {
+  songIndex -= 1;
+  if (songIndex < 0) {
     songIndex = 0;
-  } else {
-    songIndex -= 1;
   }
-  audioElement.src = `songs/${songindex + 1}.mp3`;
+  audioElement.src = songs[songIndex].filePath;
   masterSongName.innerText = songs[songIndex].songName;
   audioElement.currentTime = 0;
   audioElement.play();
